@@ -1,18 +1,4 @@
 {
-  "version": 2,
-  "name": "be-in-bago",
-  "builds": [
-    {
-      "src": "index.html",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ],
   "headers": [
     {
       "source": "/assets/(.*)",
@@ -24,7 +10,7 @@
       ]
     },
     {
-      "source": "/(.*).jpg",
+      "source": "/(.*\\.(jpg|jpeg|png|gif|webp|svg|css|js))",
       "headers": [
         {
           "key": "Cache-Control",
