@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Be In Bago - Image Contact Sheet</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f5f5f5;
+      padding: 40px 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    
+    h1 {
+      color: #0A2E5C;
+      margin-bottom: 12px;
+      font-size: 32px;
+    }
+    
+    .subtitle {
+      color: #666;
+      margin-bottom: 40px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    
+    .instructions {
+      background: #FFF8EF;
+      border-left: 4px solid #F28C28;
+      padding: 20px;
+      margin-bottom: 40px;
+      border-radius: 8px;
+    }
+    
+    .instructions h2 {
+      color: #F28C28;
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+    
+    .instructions p {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+    
+    .instructions ul {
+      margin: 12px 0 0 20px;
+      color: #666;
+    }
+    
+    .instructions li {
+      margin-bottom: 4px;
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+    
+    .image-card {
+      background: white;
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+    
+    .image-card:hover {
+      border-color: #F28C28;
+      box-shadow: 0 8px 24px rgba(242, 140, 40, 0.2);
+      transform: translateY(-4px);
+    }
+    
+    .image-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 75%; /* 4:3 aspect ratio */
+      background: #f0f0f0;
+      overflow: hidden;
+    }
+    
+    .image-wrapper img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .image-info {
+      padding: 20px;
+    }
+    
+    .image-number {
+      font-size: 24px;
+      font-weight: 700;
+      color: #0A2E5C;
+      margin-bottom: 8px;
+    }
+    
+    .image-filename {
+      font-size: 14px;
+      color: #999;
+      font-family: 'Courier New', monospace;
+      margin-bottom: 12px;
+    }
+    
+    .image-dimensions {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 16px;
+    }
+    
+    .identification-form {
+      background: #f8f8f8;
+      padding: 16px;
+      border-radius: 8px;
+      margin-top: 16px;
+    }
+    
+    .identification-form label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #0A2E5C;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .identification-form textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 14px;
+      resize: vertical;
+      min-height: 80px;
+    }
+    
+    .identification-form textarea:focus {
+      outline: none;
+      border-color: #F28C28;
+    }
+    
+    .status-badge {
+      display: inline-block;
+      padding: 6px 12px;
+      background: #fef3c7;
+      color: #92400e;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 12px;
+    }
+    
+    .confirmed {
+      background: #d1fae5;
+      color: #065f46;
+    }
+    
+    .summary {
+      background: #e0f2fe;
+      border-left: 4px solid #0A2E5C;
+      padding: 24px;
+      border-radius: 8px;
+      margin-top: 40px;
+    }
+    
+    .summary h2 {
+      color: #0A2E5C;
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+    
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    
+    .summary-item {
+      background: white;
+      padding: 16px;
+      border-radius: 8px;
+    }
+    
+    .summary-label {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .summary-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: #0A2E5C;
+    }
+    
+    .confirmed-images {
+      margin-top: 40px;
+      padding-top: 40px;
+      border-top: 2px solid #e0e0e0;
+    }
+    
+    .confirmed-images h2 {
+      color: #059669;
+      margin-bottom: 20px;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+      }
+      
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      
+      h1 {
+        font-size: 24px;
+      }
+    }
+    
+    @media print {
+      body {
+        background: white;
+      }
+      
+      .container {
+        box-shadow: none;
+        padding: 0;
+      }
+      
+      .identification-form {
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🖼️ Be In Bago - Image Contact Sheet</h1>
+    <p class="subtitle">
+      Please review the images below and provide identification for each numbered image (1.jpg through 6.jpg).
+      This information will help create accurate destination pages and gallery descriptions.
+    </p>
+    
+    <div class="instructions">
+      <h2>📝 How to Identify Images</h2>
+      <p>For each image, please provide:</p>
+      <ul>
+        <li><strong>Location/Subject:</strong> What does this image show? (e.g., "Marapara Falls", "City Plaza", "Sugar cane fields")</li>
+        <li><strong>Category:</strong> What type of content? (e.g., Nature, Heritage site, Food, Festival, Community)</li>
+        <li><strong>Description:</strong> Brief context about what visitors would experience here</li>
+        <li><strong>Visitor Information:</strong> Any practical details (if known): location, best time to visit, accessibility</li>
+      </ul>
+      <p style="margin-top: 12px;"><strong>Note:</strong> You can write directly below each image or send this information via Facebook message.</p>
+    </div>
+    
+    <!-- UNIDENTIFIED IMAGES SECTION -->
+    <h2 style="color: #F28C28; margin-bottom: 24px;">⏳ Images Awaiting Identification</h2>
+    
+    <div class="grid">
+      <!-- Image 1 -->
+      <div class="image-card">
+        <div class="image-wrapper">
+          <img src="assets/images/gallery/1.jpg" alt="Image 1 - Awaiting identification">
+        </div>
+        <div class="image-info">
+          <div class="image-number">Image #1</div>
+          <div class="image-filename">Filename: 1.jpg</div>
+          <div class="image-dimensions">Size: 118 KB | Uploaded: Oct 16, 2026</div>
+          
+          <div class="identification-form">
+            <label>What does this image show?</label>
+            <textarea placeholder="Example: This shows the historic San Sebastian Cathedral in downtown Bago, a beautiful Spanish colonial church that's a popular photography spot..."></textarea>
+          </div>
+          
+          <span class="status-badge">⏳ Awaiting Identification</span>
+        </div>
+      </div>
+      
+      <!-- Image 2 -->
+      <div class="image-card">
+        <div class="image-wrapper">
+          <img src="assets/images/gallery/2.jpg" alt="Image 2 - Awaiting identification">
+        </div>
+        <div class="image-info">
+          <div class="image-number">Image #2</div>
+          <div class="image-filename">Filename: 2.jpg</div>
+          <div class="image-dimensions">Size: 135 KB | Uploaded: Oct 16, 2026</div>
+          
+          <div class="identification-form">
+            <label>What does this image show?</label>
+            <textarea placeholder="Example: Rice terraces in Barangay Alijis during harvest season. Visitors can arrange farm tours with local guides..."></textarea>
+          </div>
+          
+          <span class="status-badge">⏳ Awaiting Identification</span>
+        </div>
+      </div>
+      
+      <!-- Image 3 -->
+      <div class="image-card">
+        <div class="image-wrapper">
+          <img src="assets/images/gallery/3.jpg" alt="Image 3 - Awaiting identification">
+        </div>
+        <div class="image-info">
+          <div class="image-number">Image #3</div>
+          <div class="image-filename">Filename: 3.jpg</div>
+          <div class="image-dimensions">Size: 130 KB | Uploaded: Oct 16, 2026</div>
+          
+          <div class="identification-form">
+            <label>What does this image show?</label>
+            <textarea placeholder="Example: The Bago River during sunset, a peaceful spot for evening walks and reflection..."></textarea>
+          </div>
+          
+          <span class="status-badge">⏳ Awaiting Identification</span>
+        </div>
+      </div>
+      
+      <!-- Image 4 -->
+      <div class="image-card">
+        <div class="image-wrapper">
+          <img src="assets/images/gallery/4.jpg" alt="Image 4 - Awaiting identification">
+        </div>
+        <div class="image-info">
+          <div class="image-number">Image #4</div>
+          <div class="image-filename">Filename: 4.jpg</div>
+          <div class="image-dimensions">Size: 119 KB | Uploaded: Oct 16, 2026</div>
+          
+          <div class="identification-form">
+            <label>What does this image show?</label>
+            <textarea placeholder="Example: Traditional Filipino delicacies sold at the weekend market, including kakanin and local sweets..."></textarea>
+          </div>
+          
+          <span class="status-badge">⏳ Awaiting Identification</span>
+        </div>
+      </div>
+      
+      <!-- Image 5 -->
+      <div class="image-card">
+        <div class="image-wrapper">
+          <img src="assets/images/gallery/5.jpg" alt="Image 5 - Awaiting identification">
+        </div>
+        <div class="image-info">
+          <div class="image-number">Image #5</div>
+          <div class="image-filename">Filename: 5.jpg</div>
+          <div class="image-dimensions">Size: 101 KB | Uploaded: Oct 16, 2026</div>
+          
+          <div class="identification-form">
+            <label>What does this image show?</label>
+            <textarea placeholder="Example: Local artisans weaving traditional crafts, showcasing Bago's cultural heritage..."></textarea>
+          </div>
+          
+          <span class="status-badge">⏳ Awaiting Identification</span>
+        </div>
+      </div>
+      
+      <!-- Image 6 -->
+      <div class="image-card">
+        <div class="image-wrapper">
+          <img src="assets/images/gallery/6.jpg" alt="Image 6 - Awaiting identification">
+        </div>
+        <div class="image-info">
+          <div class="image-number">Image #6</div>
+          <div class="image-filename">Filename: 6.jpg</div>
+          <div class="image-dimensions">Size: 128 KB | Uploaded: Oct 16, 2026</div>
+          
+          <div class="identification-form">
+            <label>What does this image show?</label>
+            <textarea placeholder="Example: The famous Bago City Hall building, an architectural landmark in the city center..."></textarea>
+          </div>
+          
+          <span class="status-badge">⏳ Awaiting Identification</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- CONFIRMED IMAGES SECTION -->
+    <div class="confirmed-images">
+      <h2>✅ Confirmed Images (Already Identified)</h2>
+      
+      <div class="grid">
+        <!-- Weekend Market -->
+        <div class="image-card">
+          <div class="image-wrapper">
+            <img src="assets/images/destinations/weekend-market.jpg" alt="Weekend Market">
+          </div>
+          <div class="image-info">
+            <div class="image-number">Weekend Market ✓</div>
+            <div class="image-filename">Filename: WEEKENDMARKET.jpg</div>
+            <div class="image-dimensions">Size: 251 KB</div>
+            <p style="margin-top: 12px; color: #666; line-height: 1.6;">
+              <strong>Status:</strong> Identified and integrated into website<br>
+              <strong>Category:</strong> Shopping & Culture<br>
+              <strong>Use:</strong> Featured destination on homepage
+            </p>
+            <span class="status-badge confirmed">✅ Confirmed</span>
+          </div>
+        </div>
+        
+        <!-- Bacolodia -->
+        <div class="image-card">
+          <div class="image-wrapper">
+            <img src="assets/images/destinations/bacolodia.jpg" alt="Cultural Heritage">
+          </div>
+          <div class="image-info">
+            <div class="image-number">Cultural Heritage ✓</div>
+            <div class="image-filename">Filename: BACOLODIA.jpg</div>
+            <div class="image-dimensions">Size: 301 KB</div>
+            <p style="margin-top: 12px; color: #666; line-height: 1.6;">
+              <strong>Status:</strong> Identified and integrated<br>
+              <strong>Category:</strong> Culture & Heritage<br>
+              <strong>Use:</strong> Featured destination on homepage<br>
+              <strong>Note:</strong> Context pending confirmation
+            </p>
+            <span class="status-badge confirmed">✅ Confirmed</span>
+          </div>
+        </div>
+        
+        <!-- Hero/Cover -->
+        <div class="image-card">
+          <div class="image-wrapper">
+            <img src="assets/images/hero/hero-cover.jpg" alt="Be In Bago Cover">
+          </div>
+          <div class="image-info">
+            <div class="image-number">Hero Cover ✓</div>
+            <div class="image-filename">Filename: be in bago cover.jpg</div>
+            <div class="image-dimensions">Size: 169 KB</div>
+            <p style="margin-top: 12px; color: #666; line-height: 1.6;">
+              <strong>Status:</strong> Confirmed Facebook cover photo<br>
+              <strong>Use:</strong> Hero section, closing section, OG image<br>
+              <strong>Note:</strong> Primary branding image
+            </p>
+            <span class="status-badge confirmed">✅ Confirmed</span>
+          </div>
+        </div>
+        
+        <!-- Logo -->
+        <div class="image-card">
+          <div class="image-wrapper">
+            <img src="assets/images/brand/logo.jpg" alt="Be In Bago Logo">
+          </div>
+          <div class="image-info">
+            <div class="image-number">Brand Logo ✓</div>
+            <div class="image-filename">Filename: be in bago profile.jpg</div>
+            <div class="image-dimensions">Size: 78 KB</div>
+            <p style="margin-top: 12px; color: #666; line-height: 1.6;">
+              <strong>Status:</strong> Confirmed Facebook profile photo<br>
+              <strong>Use:</strong> Header logo, hero logo, footer logo<br>
+              <strong>Note:</strong> Official brand identifier
+            </p>
+            <span class="status-badge confirmed">✅ Confirmed</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- SUMMARY -->
+    <div class="summary">
+      <h2>📊 Image Status Summary</h2>
+      <div class="summary-grid">
+        <div class="summary-item">
+          <div class="summary-label">Total Images</div>
+          <div class="summary-value">10</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Confirmed & Integrated</div>
+          <div class="summary-value" style="color: #059669;">4</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Awaiting Identification</div>
+          <div class="summary-value" style="color: #F28C28;">6</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Homepage Status</div>
+          <div class="summary-value" style="color: #059669; font-size: 14px;">Ready ✓</div>
+        </div>
+      </div>
+      
+      <p style="margin-top: 20px; color: #666; line-height: 1.6;">
+        <strong>Next Steps:</strong> Once you identify the 6 numbered images, they can be integrated into specific destination pages,
+        experience sections, or gallery features with accurate descriptions and context. The homepage is fully functional 
+        and ready for testing with current confirmed images.
+      </p>
+    </div>
+  </div>
+</body>
+</html>

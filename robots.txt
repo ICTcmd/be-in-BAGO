@@ -1,0 +1,10 @@
+# Be In Bago Tourism Website - Robots.txt
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://beinbago.vercel.app/sitemap.xml
+
+# Crawl-delay (optional)
+Crawl-delay: 1

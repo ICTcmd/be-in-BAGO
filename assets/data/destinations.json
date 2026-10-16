@@ -1,0 +1,76 @@
+{
+  "destinations": [
+    {
+      "id": "weekend-market",
+      "name": "Bago City Weekend Market",
+      "slug": "weekend-market",
+      "category": "Shopping & Culture",
+      "shortDescription": "Experience the vibrant heart of Bago City where locals gather every weekend to showcase fresh produce, local crafts, and authentic street food.",
+      "fullDescription": "The Bago City Weekend Market is a celebration of local culture, community, and commerce. Every weekend, the market comes alive with the colors and aromas of fresh produce from surrounding farmlands, handcrafted goods from local artisans, and the warm smiles of Bagonhons welcoming visitors to experience genuine Filipino hospitality.",
+      "image": "assets/images/destinations/weekend-market.jpg",
+      "visitorInfo": {
+        "status": "confirmed",
+        "note": "Schedule and details to be verified"
+      },
+      "tags": ["market", "local", "food", "culture", "weekend", "shopping"]
+    },
+    {
+      "id": "bacolodia-connection",
+      "name": "Bacolodia Cultural Connection",
+      "slug": "bacolodia",
+      "category": "Culture & Heritage",
+      "shortDescription": "Discover Bago City's rich cultural connection to the wider Negros Occidental heritage and the vibrant traditions of the region.",
+      "fullDescription": "Bago City maintains strong cultural and historical ties to the broader Negros Occidental region. Experience the shared heritage, festivals, and traditions that connect Bagonhons to their neighboring communities.",
+      "image": "assets/images/destinations/bacolodia.jpg",
+      "visitorInfo": {
+        "status": "pending",
+        "note": "Context and specific details to be confirmed"
+      },
+      "tags": ["culture", "heritage", "festivals", "regional"]
+    }
+  ],
+  "placeholders": [
+    {
+      "id": "destination-1",
+      "name": "Destination from Image 1",
+      "status": "awaiting-identification",
+      "image": "assets/images/gallery/1.jpg",
+      "note": "Image content needs to be identified before creating destination"
+    },
+    {
+      "id": "destination-2",
+      "name": "Destination from Image 2",
+      "status": "awaiting-identification",
+      "image": "assets/images/gallery/2.jpg",
+      "note": "Image content needs to be identified before creating destination"
+    },
+    {
+      "id": "destination-3",
+      "name": "Destination from Image 3",
+      "status": "awaiting-identification",
+      "image": "assets/images/gallery/3.jpg",
+      "note": "Image content needs to be identified before creating destination"
+    },
+    {
+      "id": "destination-4",
+      "name": "Destination from Image 4",
+      "status": "awaiting-identification",
+      "image": "assets/images/gallery/4.jpg",
+      "note": "Image content needs to be identified before creating destination"
+    },
+    {
+      "id": "destination-5",
+      "name": "Destination from Image 5",
+      "status": "awaiting-identification",
+      "image": "assets/images/gallery/5.jpg",
+      "note": "Image content needs to be identified before creating destination"
+    },
+    {
+      "id": "destination-6",
+      "name": "Destination from Image 6",
+      "status": "awaiting-identification",
+      "image": "assets/images/gallery/6.jpg",
+      "note": "Image content needs to be identified before creating destination"
+    }
+  ]
+}

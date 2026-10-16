@@ -1,0 +1,46 @@
+{
+  "categories": [
+    {
+      "id": "nature-adventure",
+      "name": "Nature & Adventure",
+      "icon": "🏞️",
+      "description": "Explore Bago City's natural landscapes, hiking trails, and outdoor adventures that connect you with the beauty of Negros Occidental.",
+      "status": "awaiting-content"
+    },
+    {
+      "id": "culture-heritage",
+      "name": "Culture & Heritage",
+      "icon": "🏛️",
+      "description": "Immerse yourself in the rich history, traditions, and cultural heritage that define Bago City's unique identity.",
+      "status": "awaiting-content"
+    },
+    {
+      "id": "food-flavors",
+      "name": "Food & Flavors",
+      "icon": "🍽️",
+      "description": "Savor authentic Bagonhon cuisine, local delicacies, and the agricultural bounty that makes Bago City a culinary destination.",
+      "status": "awaiting-content"
+    },
+    {
+      "id": "festivals-events",
+      "name": "Festivals & Events",
+      "icon": "🎉",
+      "description": "Join vibrant celebrations, cultural festivals, and community events that showcase the warmth and spirit of Bago City.",
+      "status": "awaiting-content"
+    },
+    {
+      "id": "community",
+      "name": "Community Encounters",
+      "icon": "❤️",
+      "description": "Meet the people of Bago City, hear their stories, and experience the genuine Filipino hospitality that makes every visit memorable.",
+      "status": "awaiting-content"
+    },
+    {
+      "id": "arts-crafts",
+      "name": "Arts & Crafts",
+      "icon": "🎨",
+      "description": "Discover local artisans, traditional crafts, and contemporary arts that reflect Bago City's creative spirit.",
+      "status": "awaiting-content"
+    }
+  ]
+}
