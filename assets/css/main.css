@@ -290,6 +290,7 @@ p {
   transition: transform var(--transition-base);
   overflow-y: auto;
   z-index: 999;
+  box-shadow: var(--shadow-xl);
 }
 
 .nav-mobile.active {
@@ -951,7 +952,7 @@ p {
     font-size: var(--text-2xl);
   }
   
-  /* Show desktop navigation, hide mobile */
+  /* Show desktop navigation on tablets and up, hide mobile */
   .nav-desktop {
     display: block;
   }
@@ -961,7 +962,7 @@ p {
   }
   
   .nav-mobile {
-    display: none;
+    display: none !important; /* Hide mobile menu on desktop */
   }
   
   /* HERO SECTION */
