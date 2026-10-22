@@ -256,7 +256,7 @@ p {
   background: none;
   border: none;
   padding: var(--space-2);
-  z-index: 1001;
+  z-index: 1002;
 }
 
 .menu-toggle span {
@@ -289,7 +289,7 @@ p {
   transform: translateX(100%);
   transition: transform var(--transition-base);
   overflow-y: auto;
-  z-index: 999;
+  z-index: 1001;
   box-shadow: var(--shadow-xl);
 }
 
@@ -962,7 +962,7 @@ p {
   }
   
   .nav-mobile {
-    display: none !important; /* Hide mobile menu on desktop */
+    display: none; /* Hide mobile menu on desktop */
   }
   
   /* HERO SECTION */
